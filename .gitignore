@@ -1,0 +1,12 @@
+# Configuración local con contraseñas (no se sube)
+config/config.php
+
+# Registros generados por el middleware
+*.log
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Configuración de VS Code
+.vscode/
