@@ -1,6 +1,4 @@
 <?php
-// Operaciones SOAP. Cada método recibe el objeto de la solicitud
-// (con los campos del WSDL) y devuelve un arreglo que PHP convierte en XML.
 require_once __DIR__ . '/../middleware/Middleware.php';
 require_once __DIR__ . '/CategoriaRepository.php';
 

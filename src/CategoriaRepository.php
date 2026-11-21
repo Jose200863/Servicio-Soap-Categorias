@@ -1,5 +1,4 @@
 <?php
-// Acceso a datos con consultas preparadas.
 class CategoriaRepository
 {
     private PDO $db;

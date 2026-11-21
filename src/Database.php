@@ -1,5 +1,4 @@
 <?php
-// Conexión PDO a la misma base de datos del API REST.
 class Database
 {
     public static function conectar(array $cfg): PDO
