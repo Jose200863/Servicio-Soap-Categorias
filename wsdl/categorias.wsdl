@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<definitions
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="urn:categorias"
+    targetNamespace="urn:categorias"
+    name="ServicioCategorias">
+
+    <types>
+        <xsd:schema
+            targetNamespace="urn:categorias"
+            elementFormDefault="qualified">
+
+            <xsd:complexType name="Categoria">
+                <xsd:sequence>
+                    <xsd:element name="codigo" type="xsd:int"/>
+                    <xsd:element name="nombre" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+
+            <xsd:complexType name="SolicitudCodigo">
+                <xsd:sequence>
+                    <xsd:element name="codigo" type="xsd:int"/>
+                </xsd:sequence>
+            </xsd:complexType>
+
+            <xsd:complexType name="SolicitudDatos">
+                <xsd:sequence>
+                    <xsd:element name="codigo" type="xsd:int"/>
+                    <xsd:element name="nombre" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+
+            <xsd:complexType name="SolicitudVacia">
+                <xsd:sequence/>
+            </xsd:complexType>
+
+            <xsd:complexType name="Respuesta">
+                <xsd:sequence>
+                    <xsd:element name="exito" type="xsd:boolean"/>
+                    <xsd:element name="mensaje" type="xsd:string"/>
+                    <xsd:element name="categoria"
+                                 type="tns:Categoria"
+                                 minOccurs="0"/>
+                    <xsd:element name="categorias"
+                                 type="tns:Categoria"
+                                 minOccurs="0"
+                                 maxOccurs="unbounded"/>
+                </xsd:sequence>
+            </xsd:complexType>
+
+            <xsd:element name="agregarCategoria" type="tns:SolicitudDatos"/>
+            <xsd:element name="listarCategorias" type="tns:SolicitudVacia"/>
+            <xsd:element name="buscarCategoria" type="tns:SolicitudCodigo"/>
+            <xsd:element name="actualizarCategoria" type="tns:SolicitudDatos"/>
+            <xsd:element name="eliminarCategoria" type="tns:SolicitudCodigo"/>
+
+            <xsd:element name="agregarCategoriaResponse" type="tns:Respuesta"/>
+            <xsd:element name="listarCategoriasResponse" type="tns:Respuesta"/>
+            <xsd:element name="buscarCategoriaResponse" type="tns:Respuesta"/>
+            <xsd:element name="actualizarCategoriaResponse" type="tns:Respuesta"/>
+            <xsd:element name="eliminarCategoriaResponse" type="tns:Respuesta"/>
+
+        </xsd:schema>
+    </types>
+
+    <message name="AgregarEntrada">
+        <part name="parameters" element="tns:agregarCategoria"/>
+    </message>
+    <message name="AgregarSalida">
+        <part name="parameters" element="tns:agregarCategoriaResponse"/>
+    </message>
+
+    <message name="ListarEntrada">
+        <part name="parameters" element="tns:listarCategorias"/>
+    </message>
+    <message name="ListarSalida">
+        <part name="parameters" element="tns:listarCategoriasResponse"/>
+    </message>
+
+    <message name="BuscarEntrada">
+        <part name="parameters" element="tns:buscarCategoria"/>
+    </message>
+    <message name="BuscarSalida">
+        <part name="parameters" element="tns:buscarCategoriaResponse"/>
+    </message>
+
+    <message name="ActualizarEntrada">
+        <part name="parameters" element="tns:actualizarCategoria"/>
+    </message>
+    <message name="ActualizarSalida">
+        <part name="parameters" element="tns:actualizarCategoriaResponse"/>
+    </message>
+
+    <message name="EliminarEntrada">
+        <part name="parameters" element="tns:eliminarCategoria"/>
+    </message>
+    <message name="EliminarSalida">
+        <part name="parameters" element="tns:eliminarCategoriaResponse"/>
+    </message>
+
+    <portType name="CategoriasPortType">
+        <operation name="agregarCategoria">
+            <input message="tns:AgregarEntrada"/>
+            <output message="tns:AgregarSalida"/>
+        </operation>
+
+        <operation name="listarCategorias">
+            <input message="tns:ListarEntrada"/>
+            <output message="tns:ListarSalida"/>
+        </operation>
+
+        <operation name="buscarCategoria">
+            <input message="tns:BuscarEntrada"/>
+            <output message="tns:BuscarSalida"/>
+        </operation>
+
+        <operation name="actualizarCategoria">
+            <input message="tns:ActualizarEntrada"/>
+            <output message="tns:ActualizarSalida"/>
+        </operation>
+
+        <operation name="eliminarCategoria">
+            <input message="tns:EliminarEntrada"/>
+            <output message="tns:EliminarSalida"/>
+        </operation>
+    </portType>
+
+    <binding name="CategoriasBinding" type="tns:CategoriasPortType">
+        <soap:binding
+            style="document"
+            transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <operation name="agregarCategoria">
+            <soap:operation soapAction="urn:categorias#agregarCategoria"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+        <operation name="listarCategorias">
+            <soap:operation soapAction="urn:categorias#listarCategorias"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+        <operation name="buscarCategoria">
+            <soap:operation soapAction="urn:categorias#buscarCategoria"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+        <operation name="actualizarCategoria">
+            <soap:operation soapAction="urn:categorias#actualizarCategoria"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+        <operation name="eliminarCategoria">
+            <soap:operation soapAction="urn:categorias#eliminarCategoria"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="ServicioCategorias">
+        <port name="CategoriasPort" binding="tns:CategoriasBinding">
+            <soap:address
+                location="http://localhost/Servicio-Soap-Categorias/soap.php"/>
+        </port>
+    </service>
+
+</definitions>
