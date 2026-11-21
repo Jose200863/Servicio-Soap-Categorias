@@ -63,7 +63,6 @@ class ServicioCategorias
       });
     }
 
-    // ===== PERSONA 3: actualizarCategoria =====
     public function actualizarCategoria($p): array
     {
         [$codigo, $nombre] = $this->campos($p);
@@ -88,7 +87,6 @@ class ServicioCategorias
         });
     }
 
-    // ===== PERSONA 4: eliminarCategoria =====
 }
 
 
