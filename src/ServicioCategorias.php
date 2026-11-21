@@ -43,7 +43,27 @@ class ServicioCategorias
         });
     }
 
-    // ===== PERSONA 2: buscarCategoria =====
+    public function buscarCategoria($p): array
+    {
+    $codigo = $p->codigo ?? null;
+
+    return $this->mw->ejecutar('buscarCategoria', ['codigo' => $codigo], function () use ($codigo) {
+        $categoria = $this->repo->buscar((int)$codigo);
+
+        if ($categoria === null) {
+            return [
+                'exito' => false,
+                'mensaje' => 'La categoría no existe.'
+            ];
+        }
+
+        return [
+            'exito' => true,
+            'mensaje' => 'Categoría encontrada.',
+            'categoria' => $categoria
+        ];
+      });
+    }
 
     // ===== PERSONA 3: actualizarCategoria =====
 
