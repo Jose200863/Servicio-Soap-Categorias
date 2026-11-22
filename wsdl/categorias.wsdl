@@ -22,13 +22,13 @@
 
             <xsd:complexType name="SolicitudCodigo">
                 <xsd:sequence>
-                    <xsd:element name="codigo" type="xsd:int"/>
+                    <xsd:element name="codigo" type="xsd:string"/>
                 </xsd:sequence>
             </xsd:complexType>
 
             <xsd:complexType name="SolicitudDatos">
                 <xsd:sequence>
-                    <xsd:element name="codigo" type="xsd:int"/>
+                    <xsd:element name="codigo" type="xsd:string"/>
                     <xsd:element name="nombre" type="xsd:string"/>
                 </xsd:sequence>
             </xsd:complexType>

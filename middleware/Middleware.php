@@ -53,30 +53,40 @@ class Middleware
     }
 
     public function validar(string $operacion, array $parametros): ?string
-    {
-        switch ($operacion) {
-            case 'actualizarCategoria':
-            case 'agregarCategoria':
-                if (!isset($parametros['codigo']) || !is_numeric($parametros['codigo']) || (int)$parametros['codigo'] <= 0) {
-                    return "Error de validación (Middleware): El código debe ser un número entero mayor a 0.";
-                }
-                if (!isset($parametros['nombre']) || trim((string)$parametros['nombre']) === '') {
-                    return "Error de validación (Middleware): El nombre de la categoría no puede estar vacío.";
-                }
-                $longitud = mb_strlen(trim((string)$parametros['nombre']));
-                if ($longitud < 2 || $longitud > 100) {
-                    return "Error de validación (Middleware): El nombre debe tener entre 2 y 100 caracteres.";
-                }
-                break;
+{
+    switch ($operacion) {
+        case 'actualizarCategoria':
+        case 'agregarCategoria':
+            if (!isset($parametros['codigo']) || filter_var(
+                $parametros['codigo'],
+                FILTER_VALIDATE_INT,
+                ['options' => ['min_range' => 1, 'max_range' => 2147483647]]
+            ) === false) {
+                return "Error de validación (Middleware): El código debe ser un número entero mayor a 0.";
+            }
+
+            if (!isset($parametros['nombre']) || trim((string)$parametros['nombre']) === '') {
+                return "Error de validación (Middleware): El nombre de la categoría no puede estar vacío.";
+            }
+
+            $longitud = mb_strlen(trim((string)$parametros['nombre']));
+
+            if ($longitud < 2 || $longitud > 100) {
+                return "Error de validación (Middleware): El nombre debe tener entre 2 y 100 caracteres.";
+            }
+            break;
 
             case 'buscarCategoria':
             case 'eliminarCategoria':
-                if (!isset($parametros['codigo']) || !is_numeric($parametros['codigo']) || (int)$parametros['codigo'] <= 0) {
-                    return "Error de validación (Middleware): El código debe ser un número entero mayor a 0.";
-                }
-                break;
-        }
-
-        return null;
+            if (!isset($parametros['codigo']) || filter_var(
+                $parametros['codigo'],
+                FILTER_VALIDATE_INT,
+                ['options' => ['min_range' => 1, 'max_range' => 2147483647]]
+            ) === false) {
+                return "Error de validación (Middleware): El código debe ser un número entero mayor a 0.";
+            }
+            break;
     }
+    return null;
+  }
 }
