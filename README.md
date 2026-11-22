@@ -25,7 +25,7 @@ Servicio SOAP de categorías con PHP y MySQL, desarrollado con Visual Studio Cod
 
 ## Instrucciones de ejecución
 
-1. Copiar el proyecto a `C:\xampp\htdocs\Extraclase-Soap-Categorias`.
+1. Copiar el proyecto a `C:\xampp\htdocs\Servicio-Soap-Categorias`.
 2. En `php.ini` activar `extension=soap` (sin `;`) y reiniciar Apache.
 3. Iniciar Apache y MySQL desde XAMPP.
 4. En SQLyog, ejecutar `database/database.sql` en la misma base de datos del API REST.
@@ -34,8 +34,8 @@ Servicio SOAP de categorías con PHP y MySQL, desarrollado con Visual Studio Cod
 
 ## URLs
 
-- Endpoint: `http://localhost/Extraclase-Soap-Categorias/soap.php`
-- WSDL: `http://localhost/Extraclase-Soap-Categorias/wsdl/categorias.wsdl`
+- Endpoint: `http://localhost/Servicio-Soap-Categorias/soap.php`
+- WSDL: `http://localhost/Servicio-Soap-Categorias/wsdl/categorias.wsdl`
 
 ## Pruebas con Postman
 
