@@ -87,6 +87,29 @@ class ServicioCategorias
         });
     }
 
+    public function eliminarCategoria($p): array
+    {
+        $codigo = $p->codigo ?? null;
+
+        return $this->mw->ejecutar('eliminarCategoria', ['codigo' => $codigo], function () use ($codigo) {
+            $categoria = $this->repo->buscar((int)$codigo);
+
+            if ($categoria === null) {
+                return [
+                    'exito'   => false,
+                    'mensaje' => "Error controlado: La categoría con código $codigo no existe."
+                ];
+            }
+
+            $this->repo->eliminar((int)$codigo);
+
+            return [
+                'exito'   => true,
+                'mensaje' => 'Categoría eliminada correctamente.'
+            ];
+        });
+    }
+
 }
 
 

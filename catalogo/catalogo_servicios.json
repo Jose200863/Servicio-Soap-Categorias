@@ -1,0 +1,17 @@
+{
+  "servicios": [
+    {
+      "nombre": "Servicio SOAP de Categorías",
+      "descripcion": "Servicio SOAP para administrar categorías almacenadas en MySQL.",
+      "url_endpoint": "http://localhost/Servicio-Soap-Categorias/soap.php",
+      "url_wsdl": "http://localhost/Servicio-Soap-Categorias/wsdl/categorias.wsdl",
+      "operaciones": [
+        "agregarCategoria",
+        "listarCategorias",
+        "buscarCategoria",
+        "actualizarCategoria",
+        "eliminarCategoria"
+      ]
+    }
+  ]
+}
